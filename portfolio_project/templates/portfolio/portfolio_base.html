@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Title
+      {% endblock title %}
+    </title>
+    <meta name="description" content="Your description here" />
+    <meta name="keywords" content="keyword1, keyword2, keyword3" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  </head>
+  <body>
+    <nav class="nav">
+      <ul>
+        <li>
+          <a href="#hero">Home</a>
+        </li>
+        <li>
+          <a href="#profile">Profile</a>
+        </li>
+        <li>
+          <a href="”#”">Skill</a>
+        </li>
+        <li>
+          <a href="”#”">App</a>
+        </li>
+        <li>
+          <a href="”#”">Blog</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="main-container">
+      {% block content %}
+      {% endblock content %}
+    </div>
+    <footer class="footer">
+      <ul class="md-flex">
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">サイトマップ</a>
+        </li>
+        <li>
+          <a href="#">プライバシーポリシー</a>
+        </li>
+      </ul>
+      <p class="copyright">© 2023 Example Inc. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

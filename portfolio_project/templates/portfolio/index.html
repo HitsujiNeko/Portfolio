@@ -1,0 +1,111 @@
+{% extends "portfolio/portfolio_base.html" %}
+{% block title %}
+  Portfolio
+{% endblock title %}
+{% block content %}
+  <div class="hero" id="hero">
+    <strong>Takumi Dowaki's Portfolio</strong>
+    <div class="hero-particles" id="particles-js"></div>
+    <video autoplay loop muted preload>
+      {% load static %}
+      <source src="{% static "videos/cow2.mp4" %}"
+              type="video/mp4"
+              alt="Hero image" />
+    </video>
+  </div>
+  <section class="section" id="profile">
+    <h1 class="section-headline">Profile</h1>
+    <figure class="profile">
+      <img class="profile-image"
+           src="https://dummyimage.com/600x400/000/fff"
+           alt="profile image"
+           width="600"
+           height="400" />
+      <figcaption class="profile-caption">
+        <p class="profile-description">
+          名前：堂脇 拓海
+          <br>
+          生年月日：2002年4月19日
+          <br>
+          出身地：大阪府
+          <br>
+          大阪市立大学工学部都市学科
+        </p>
+        <h2 class="profile-headline">About Me</h2>
+        <p class="profile-about">
+          大学では都市工学を学んできました。私のモットーは常に学び、挑戦を続け、自身をアップデートし続けることです。そのため、トレンドの移り変わりが頻繁で、知識や情報のアップデートが求められるIT業界に興味を持ちました。
+          フロントエンド、データ分析、Webアプリ開発など幅広く興味を持ち、スキルを楽しく磨きながら役立ちつようなサービスを提供できる人になりたいと考えています。
+        </p>
+      </figcaption>
+    </figure>
+  </section>
+  <section class="section section-secondary">
+    <h1 class="section-headline">Skill & Qualification</h1>
+    <ul class="grid grid-col-4">
+      <li class="grid-item">
+        <dl class="skill">
+          <dl class="skill-headline">
+            1.Sheep
+          </dl>
+          <dd class="skill-img">
+            <img src="assets/images/animals/001-sheep.png"
+                 width="140"
+                 height="140"
+                 alt="skill image">
+          </dd>
+          <dd class="skill-discription">
+            nyossu!!nyossu!!nyossu!!
+          </dd>
+        </dl>
+      </li>
+      <li class="grid-item">
+        <dl class="skill">
+          <dl class="skill-headline">
+            2.Hamster
+          </dl>
+          <dd class="skill-img">
+            <img src="assets/images/animals/002-hamster.png"
+                 width="140"
+                 height="140"
+                 alt="skill image">
+          </dd>
+          <dd class="skill-discription">
+            nyossu!!nyossu!!nyossu!!
+          </dd>
+        </dl>
+      </li>
+      <li class="grid-item">
+        <dl class="skill">
+          <dl class="skill-headline">
+            3.Dog
+          </dl>
+          <dd class="skill-img">
+            <img src="assets/images/animals/003-dog.png"
+                 width="140"
+                 height="140"
+                 alt="skill image">
+          </dd>
+          <dd class="skill-discription">
+            nyossu!!nyossu!!nyossu!!
+          </dd>
+        </dl>
+      </li>
+      <li class="grid-item">
+        <dl class="skill">
+          <dl class="skill-headline">
+            4.Cat
+          </dl>
+          <dd class="skill-img">
+            <img src="assets/images/animals/004-cat.png"
+                 width="140"
+                 height="140"
+                 alt="skill image">
+          </dd>
+          <dd class="skill-discription">
+            nyossu!!nyossu!!nyossu!!
+          </dd>
+        </dl>
+      </li>
+    </ul>
+  </section>
+{% endblock content %}

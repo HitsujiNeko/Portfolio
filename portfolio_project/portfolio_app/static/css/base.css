@@ -1,0 +1,251 @@
+/* 全体の設定 */
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
+  background-color: #e5e5e5;
+}
+ul {
+  list-style: none;
+}
+a {
+  color: #999;
+  text-decoration: none;
+}
+
+/*  */
+/* base.html */
+/*  */
+
+/* navigation bar  */
+
+nav ul {
+  display: table;
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 80%;
+  text-align: center;
+}
+nav li {
+  display: table-cell;
+  min-width: 50px;
+}
+nav a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #555;
+  padding-bottom: 5px;
+}
+nav li:hover {
+  color: #93e8ff;
+  border-bottom: 3px solid #8cfdff;
+}
+
+/* section  */
+.section {
+  padding: 20px 15px;
+}
+.section.section-secondary {
+  background: rgb(207, 204, 204);
+}
+
+.section-headline {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0 0 40px;
+}
+
+.section-button {
+  text-align: center;
+  margin-top: 30px;
+}
+@media screen and (max-width: 768px) {
+  .section-headline {
+    margin: 0 0 10px;
+    font-size: 30px;
+  }
+}
+
+/*
+ grid 
+*/
+.grid {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.grid-item {
+  list-style: none;
+}
+.grid-col-2 > .grid-item {
+  width: 50%;
+}
+.grid-col-3 > .grid-item {
+  width: 33.33%;
+}
+.grid-col-4 > .grid-item {
+  width: 25%;
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    display: block;
+  }
+  .grid-col-2 > .grid-item,
+  .grid-col-3 > .grid-item,
+  .grid-col-4 > .grid-item {
+    width: 100%;
+    margin: 20px 0;
+  }
+}
+
+/*
+hero
+*/
+.hero {
+  width: 100vw;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+}
+.hero > strong {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 75px;
+  color: #fff;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.hero > video {
+  z-index: 1;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  position: absolute;
+  object-fit: fill;
+  min-width: 90%;
+  min-height: 90%;
+}
+.hero-particles {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 350px;
+  }
+  .hero > strong {
+    font-size: 45px;
+    top: 65%;
+  }
+  .hero > video {
+    width: 100%;
+    top: 40%;
+    transform: translate(-50%, -28%);
+  }
+}
+
+/* footer */
+
+.footer {
+  padding: 2rem;
+  font-size: 15px;
+  color: #999;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  position: absolute;
+  width: 100%;
+}
+.footer a:hover {
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .md-flex {
+    display: flex;
+  }
+  .md-flex li + li {
+    margin-left: 16px;
+  }
+}
+
+/* profile */
+.profile {
+  margin: 0;
+  display: flex;
+}
+/*.profile-image{}*/
+
+.profile-caption {
+  padding-left: 40px;
+  font-size: 20px;
+}
+/*.profile-headline{}
+.profile-description{}*/
+
+@media screen and (max-width: 768px) {
+  .profile {
+    display: block;
+    padding: 0;
+  }
+  .profile-image {
+    max-width: 100%;
+  }
+  .profile-headline {
+    margin: 10px;
+    font-size: 25px;
+    text-align: center;
+  }
+  .profile-description {
+    font-size: 18px;
+  }
+}
+
+/* skill */
+.skill {
+  text-align: center;
+  padding: 0 0 20px;
+}
+.skill-headline {
+  font-weight: bold;
+  margin: 0 0 20px;
+}
+.skill-img {
+  margin: 0 0 20px;
+}
+.skill-discription {
+  margin: 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .skill-discription {
+    font-size: 20px;
+    text-align: center;
+  }
+  .skill-headline {
+    font-size: 20px;
+  }
+  .skill-img {
+    margin: 0 0 13px;
+    align-items: center;
+  }
+  .skill-img > img {
+    width: 40%;
+    height: 40%;
+  }
+}
