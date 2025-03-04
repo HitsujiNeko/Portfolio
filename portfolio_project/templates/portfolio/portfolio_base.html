@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       {% block title %}
-        Title
+        Portfolio
       {% endblock title %}
     </title>
     <meta name="description" content="Your description here" />
     <meta name="keywords" content="keyword1, keyword2, keyword3" />
     {% load static %}
+    <link rel="icon" href="{% static 'favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
   </head>
@@ -24,13 +25,13 @@
           <a href="#profile">Profile</a>
         </li>
         <li>
-          <a href="”#”">Skill</a>
+          <a href="#skill">Skill</a>
         </li>
         <li>
-          <a href="”#”">App</a>
+          <a href="#">App</a>
         </li>
         <li>
-          <a href="”#”">Blog</a>
+          <a href="#contact">Contact</a>
         </li>
       </ul>
     </nav>

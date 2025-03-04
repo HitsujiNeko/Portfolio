@@ -17,6 +17,12 @@ a {
 /*  */
 
 /* navigation bar  */
+nav {
+  background: #fff;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+}
 
 nav ul {
   display: table;
@@ -28,6 +34,7 @@ nav ul {
 nav li {
   display: table-cell;
   min-width: 50px;
+  position: relative;
 }
 nav a {
   display: block;
@@ -38,7 +45,21 @@ nav a {
 }
 nav li:hover {
   color: #93e8ff;
-  border-bottom: 3px solid #8cfdff;
+}
+
+nav li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #8cfdff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+nav li:hover::after {
+  transform: scaleX(1);
 }
 
 /* section  */
@@ -54,6 +75,13 @@ nav li:hover {
   font-size: 40px;
   font-weight: bold;
   margin: 0 0 40px;
+}
+
+.section-subheadline {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 35px 0;
 }
 
 .section-button {
@@ -74,10 +102,13 @@ nav li:hover {
   margin: 0;
   padding: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
 }
 .grid-item {
   list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 .grid-col-2 > .grid-item {
   width: 50%;
@@ -138,6 +169,14 @@ hero
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+#particles-js {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 768px) {
@@ -215,21 +254,38 @@ hero
   }
 }
 
-/* skill */
+/* skill section */
 .skill {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 20px 20px 40px;
   text-align: center;
-  padding: 0 0 20px;
+  height: 100%;
 }
+
 .skill-headline {
+  font-size: 24px;
   font-weight: bold;
-  margin: 0 0 20px;
+  margin-bottom: 10px;
 }
-.skill-img {
-  margin: 0 0 20px;
+
+.skill-img img {
+  margin-bottom: 15px;
+  display: block;
+  margin: 0 auto;
 }
-.skill-discription {
-  margin: 0;
-  text-align: center;
+
+.skill-period,
+.skill-level,
+.skill-description {
+  margin-bottom: 10px;
+}
+
+.skill-level {
+  font-size: 20px;
+  color: #f39c12;
 }
 
 @media screen and (max-width: 768px) {
@@ -248,4 +304,80 @@ hero
     width: 40%;
     height: 40%;
   }
+}
+
+/* qualification table */
+.qualification {
+  width: 60%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin: 0 auto;
+  font-size: 18px;
+  text-align: left;
+}
+
+.qualification th,
+.qualification td {
+  padding: 12px 15px;
+  background: #fff;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.qualification th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.qualification tr:hover td {
+  background-color: #f1f1f1;
+}
+
+/* Contact form section */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.contact-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.contact-form button[type="submit"]:hover {
+  background: #2980b9;
 }

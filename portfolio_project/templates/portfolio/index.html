@@ -1,4 +1,6 @@
 {% extends "portfolio/portfolio_base.html" %}
+{% load static %}
+{% load custom_filters %}
 {% block title %}
   Portfolio
 {% endblock title %}
@@ -7,7 +9,6 @@
     <strong>Takumi Dowaki's Portfolio</strong>
     <div class="hero-particles" id="particles-js"></div>
     <video autoplay loop muted preload>
-      {% load static %}
       <source src="{% static "videos/cow2.mp4" %}"
               type="video/mp4"
               alt="Hero image" />
@@ -40,72 +41,62 @@
     </figure>
   </section>
   <section class="section section-secondary">
-    <h1 class="section-headline">Skill & Qualification</h1>
+    <h1 class="section-headline" id="skill">Skill & Qualification</h1>
+    <h2 class="section-subheadline">Skills</h2>
     <ul class="grid grid-col-4">
-      <li class="grid-item">
-        <dl class="skill">
-          <dl class="skill-headline">
-            1.Sheep
+      {% for skill in skills %}
+        <li class="grid-item">
+          <dl class="skill">
+            <dt class="skill-headline">{{ skill.skill_name }}</dt>
+            <dd class="skill-img">
+              <img src="{{ skill.skill_image.url }}"
+                   width="140"
+                   height="140"
+                   alt="{{ skill.skill_name }} image">
+            </dd>
+            <dd class="skill-period">
+              学習期間：{{ skill.skill_learning_period }}
+            </dd>
+            <dd class="skill-level">
+              習熟度：{{ skill.skill_level|skill_level_to_stars }}
+            </dd>
+            <dd class="skill-description">
+              {{ skill.skill_description }}
+            </dd>
           </dl>
-          <dd class="skill-img">
-            <img src="assets/images/animals/001-sheep.png"
-                 width="140"
-                 height="140"
-                 alt="skill image">
-          </dd>
-          <dd class="skill-discription">
-            nyossu!!nyossu!!nyossu!!
-          </dd>
-        </dl>
-      </li>
-      <li class="grid-item">
-        <dl class="skill">
-          <dl class="skill-headline">
-            2.Hamster
-          </dl>
-          <dd class="skill-img">
-            <img src="assets/images/animals/002-hamster.png"
-                 width="140"
-                 height="140"
-                 alt="skill image">
-          </dd>
-          <dd class="skill-discription">
-            nyossu!!nyossu!!nyossu!!
-          </dd>
-        </dl>
-      </li>
-      <li class="grid-item">
-        <dl class="skill">
-          <dl class="skill-headline">
-            3.Dog
-          </dl>
-          <dd class="skill-img">
-            <img src="assets/images/animals/003-dog.png"
-                 width="140"
-                 height="140"
-                 alt="skill image">
-          </dd>
-          <dd class="skill-discription">
-            nyossu!!nyossu!!nyossu!!
-          </dd>
-        </dl>
-      </li>
-      <li class="grid-item">
-        <dl class="skill">
-          <dl class="skill-headline">
-            4.Cat
-          </dl>
-          <dd class="skill-img">
-            <img src="assets/images/animals/004-cat.png"
-                 width="140"
-                 height="140"
-                 alt="skill image">
-          </dd>
-          <dd class="skill-discription">
-            nyossu!!nyossu!!nyossu!!
-          </dd>
-        </dl>
-      </li>
+        </li>
+      {% endfor %}
     </ul>
+    <h2 class="section-subheadline">Qualification</h2>
+    <table class="qualification">
+      <thead>
+        <tr>
+          <th>資格名</th>
+          <th>取得年月</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for qualification in qualifications %}
+          <tr>
+            <td>{{ qualification.qualification_name }}</td>
+            <td>{{ qualification.qualification_acquisition_date }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  <section class="section">
+    <h1 class="section-headline" id="contact">Contact</h1>
+    <div class="contact-form">
+      <form method="post" action="{% url 'portfolio_app:contact' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">送信</button>
+      </form>
+    </div>
   </section>
 {% endblock content %}
+{% block scripts %}
+  <script src="{% static 'js/particles.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+{% endblock scripts %}
