@@ -1,15 +1,17 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import MySkill, MyQualification
+from .models import Profile,MySkill, MyQualification
 from .forms import ContactForm
 # Create your views here.
 
 # index.htmlを表示する
 def index(request):
+    profile=Profile.objects.first()
     skills = MySkill.objects.all()
     qualifications = MyQualification.objects.all()
     form = ContactForm()
     context = {
+        "profile": profile,
         "skills": skills,
         "qualifications": qualifications,
         "form": form

@@ -17,35 +17,32 @@
   <section class="section" id="profile">
     <h1 class="section-headline">Profile</h1>
     <figure class="profile">
-      <img class="profile-image"
-           src="https://dummyimage.com/600x400/000/fff"
-           alt="profile image"
+      <img src="{{ profile.profile_image.url }}"
+           class="profile-image"
+           alt="profile-img"
            width="600"
-           height="400" />
+           height="400">
       <figcaption class="profile-caption">
         <p class="profile-description">
-          名前：堂脇 拓海
+          名前：{{ profile.name }}
           <br>
-          生年月日：2002年4月19日
+          生年月日：{{ profile.birth_date }}
           <br>
-          出身地：大阪府
+          出身地：{{ profile.location }}
           <br>
-          大阪市立大学工学部都市学科
+          大学：{{ profile.education }}
         </p>
         <h2 class="profile-headline">About Me</h2>
-        <p class="profile-about">
-          大学では都市工学を学んできました。私のモットーは常に学び、挑戦を続け、自身をアップデートし続けることです。そのため、トレンドの移り変わりが頻繁で、知識や情報のアップデートが求められるIT業界に興味を持ちました。
-          フロントエンド、データ分析、Webアプリ開発など幅広く興味を持ち、スキルを楽しく磨きながら役立ちつようなサービスを提供できる人になりたいと考えています。
-        </p>
+        <p class="profile-about">{{ profile.about_me }}</p>
       </figcaption>
     </figure>
   </section>
-  <section class="section section-secondary">
+  <section class="section section-secondary" data-aos="fade-up">
     <h1 class="section-headline" id="skill">Skill & Qualification</h1>
     <h2 class="section-subheadline">Skills</h2>
     <ul class="grid grid-col-4">
       {% for skill in skills %}
-        <li class="grid-item">
+        <li class="grid-item" data-aos="fade-up">
           <dl class="skill">
             <dt class="skill-headline">{{ skill.skill_name }}</dt>
             <dd class="skill-img">
@@ -68,7 +65,7 @@
       {% endfor %}
     </ul>
     <h2 class="section-subheadline">Qualification</h2>
-    <table class="qualification">
+    <table class="qualification" data-aos="fade-up">
       <thead>
         <tr>
           <th>資格名</th>
@@ -77,13 +74,26 @@
       </thead>
       <tbody>
         {% for qualification in qualifications %}
-          <tr>
+          <tr data-aos="fade-up">
             <td>{{ qualification.qualification_name }}</td>
             <td>{{ qualification.qualification_acquisition_date }}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
+  </section>
+  <section class="section" id="apps">
+    <h1 class="section-headline">Apps</h1>
+    <p class="section-description">作成したWebアプリを掲載する予定になります。現在作成途中</p>
+    <div class="apps-grid">
+      {% for app in apps %}
+        <div class="app-item" data-aos="fade-up">
+          <h2 class="app-title">{{ app.title }}</h2>
+          <p class="app-description">{{ app.description }}</p>
+          <a href="{{ app.link }}" class="app-link" target="_blank">View App</a>
+        </div>
+      {% endfor %}
+    </div>
   </section>
   <section class="section">
     <h1 class="section-headline" id="contact">Contact</h1>
@@ -99,4 +109,11 @@
 {% block scripts %}
   <script src="{% static 'js/particles.js' %}"></script>
   <script src="{% static 'js/app.js' %}"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function() {
+      document.getElementById('loading-spinner').style.display = 'block';
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>AOS.init();</script>
 {% endblock scripts %}
