@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for portfolio_project project.
 
@@ -74,13 +76,28 @@ WSGI_APPLICATION = "portfolio_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
+if os.getenv('DJANGO_ENV') == 'production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'takumid0419$portfolio_db',
+            'USER': 'takumid0419',
+            'PASSWORD': 'taku200204',
+            'HOST': 'takumid0419.mysql.pythonanywhere-services.com',
+            'OPTIONS': {
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            },
+        }
+    }
+else:
+        DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'takumid0419$portfolio_db',
-        'USER': 'takumid0419',
-        'PASSWORD': 'taku200204',
-        'HOST': 'takumid0419.mysql.pythonanywhere-services.com',
+        'NAME': 'portfolio_db',
+        'USER': 'root',
+        'PASSWORD': 'takumido200204',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -119,11 +136,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
 
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "portfolio_app" / "static",
+    BASE_DIR / 'portfolio_app' / 'static',
 ]
 
 # Default primary key field type
