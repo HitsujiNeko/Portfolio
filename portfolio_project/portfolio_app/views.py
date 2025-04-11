@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import Profile,MySkill, MyQualification
+from .models import Profile,MySkill, MyQualification,BlogPost
 from .forms import ContactForm
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 # index.htmlを表示する
@@ -10,11 +11,13 @@ def index(request):
     skills = MySkill.objects.all()
     qualifications = MyQualification.objects.all()
     form = ContactForm()
+    blog_posts = BlogPost.objects.all().order_by('-date')
     context = {
         "profile": profile,
         "skills": skills,
         "qualifications": qualifications,
-        "form": form
+        "form": form,
+        'blog_posts': blog_posts, 
     }
     return render(request, "portfolio/index.html", context)
 
@@ -33,3 +36,7 @@ class ContactView(View):
             "form": form
         }
         return render(request, "portfolio/index.html", context)
+    
+def blog_detail(request, pk):
+    post = get_object_or_404(BlogPost, pk=pk)
+    return render(request, 'portfolio/blog_detail.html', {'post': post})

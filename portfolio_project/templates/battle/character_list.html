@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Character List</title>
+</head>
+<body>
+    <h1>Character List</h1>
+    <ul>
+        {% for character in characters %}
+            <li>{{ character.name }} - HP: {{ character.health }} - Attack: {{ character.attack_power }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

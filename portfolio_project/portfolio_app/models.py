@@ -32,6 +32,24 @@ class MyQualification(models.Model):
     
     class Meta:
       db_table = 'my_qualification'
+
+# Blog　を管理するモデル
+class BlogPost(models.Model):
+    CATEGORY_CHOICES = [
+        ('hobby', '趣味'),
+        ('dev', '開発備忘録'),
+        ('other', 'その他'),
+    ]
+
+    title = models.CharField(max_length=200)
+    date = models.DateField(auto_now_add=True)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    image = models.ImageField(upload_to='blog_images/')
+    content = models.TextField()
+    excerpt = models.TextField(max_length=300, blank=True)  # 記事の概要
+
+    def __str__(self):
+        return self.title
     
 # Apps を管理するモデル
 from django.db import models
