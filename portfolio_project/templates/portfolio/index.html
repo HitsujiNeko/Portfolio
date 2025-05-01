@@ -7,6 +7,11 @@
 {% block content %}
   <div class="hero" id="hero">
     <strong>Takumi Dowaki's Portfolio</strong>
+    {% if messages %}
+      <div class="global-success-message">
+        {% for message in messages %}{{ message }}{% endfor %}
+      </div>
+    {% endif %}
     <div class="hero-particles" id="particles-js"></div>
     <video autoplay loop muted preload>
       <source src="{% static "videos/cow2.mp4" %}"
@@ -16,26 +21,84 @@
   </div>
   <section class="section" id="profile">
     <h1 class="section-headline">Profile</h1>
-    <figure class="profile">
-      <img src="{{ profile.profile_image.url }}"
-           class="profile-image"
-           alt="profile-img"
-           width="600"
-           height="400">
-      <figcaption class="profile-caption">
-        <p class="profile-description">
-          名前：{{ profile.name }}
-          <br>
-          生年月日：{{ profile.birth_date }}
-          <br>
-          出身地：{{ profile.location }}
-          <br>
-          大学：{{ profile.education }}
-        </p>
-        <h2 class="profile-headline">About Me</h2>
-        <p class="profile-about">{{ profile.about_me }}</p>
-      </figcaption>
-    </figure>
+    <div class="profile profile-3col">
+      <div class="profile-top">
+        <div class="profile-top-left">
+          <img src="{{ profile.profile_image.url }}"
+               class="profile-image"
+               alt="profile-img"
+               width="600"
+               height="400">
+        </div>
+        <div class="profile-top-right">
+          <div class="profile-name">{{ profile.name }}</div>
+          <div class="profile-basic">
+            <span>誕生日：{{ profile.birth_date }}</span>
+            <br>
+            <span>出身地：{{ profile.location }}</span>
+          </div>
+          <div class="profile-card profile-links">
+            <ul class="profile-link-list">
+              {% if profile.blog %}
+                <li>
+                  <a href="{{ profile.blog }}"
+                     class="profile-link-btn profile-blog"
+                     target="_blank">Blog</a>
+                </li>
+              {% endif %}
+              {% if profile.github %}
+                <li>
+                  <a href="{{ profile.github }}"
+                     class="profile-link-btn profile-github"
+                     target="_blank">GitHub</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="profile-bottom">
+        <div class="profile-card profile-about">
+          <h2 class="profile-headline">
+            <span>📝 About Me</span>
+          </h2>
+          <div>
+            <div class="profile-strong">
+              <span class="profile-strong-text">「Just Do It !!」とにかくやってみる</span>
+              <br>
+              <span class="profile-strong-subtext">をモットーに日々、色んな事にチャレンジしています</span>
+            </div>
+            去年は、ゼロからプログラミングをはじめ、数カ月でPythonを習得し卒業研究でアウトプット
+            <br>
+            そして、プログラミング以外には応用情報技術者試験やボランティアなど課外活動にもチャレンジ
+            <br>
+            <br>
+            大学では土木工学を専攻しており、大阪市の地下水環境についてGIS（Geographic Information System）を専門に、研究しています。
+            授業の合間や休日に、プログラミングスキル向上に励んでいます！！
+          </div>
+        </div>
+        <div class="profile-card profile-hobbies">
+          <h2 class="profile-headline">
+            <span>趣味 Hobby</span>
+          </h2>
+          <ul>
+            <li>料理が好きで得意料理はスパニッシュオムレツ</li>
+            <li>とにかく散歩と自然が好きで色んな所に行きたい</li>
+            <li>プログラミング：気づいたら１日が終わってるくらい没頭</li>
+          </ul>
+        </div>
+        <div class="profile-card profile-interests">
+          <h2 class="profile-headline">
+            <span>今後挑戦したいこと</span>
+          </h2>
+          <ul>
+            <li>Kaggleでメダルを獲得！！</li>
+            <li>フロントエンドの技術習得に向けてWebアプリ構築中</li>
+            <li>プログラミングで実務経験を積みたい！</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
   <section class="section section-secondary" data-aos="fade-up">
     <h1 class="section-headline" id="skill">Skill & Qualification</h1>
@@ -81,27 +144,6 @@
         {% endfor %}
       </tbody>
     </table>
-  </section>
-  <section class="section" id="blog">
-    <h1 class="section-headline">Blog</h1>
-    <div class="blog-list">
-      {% for post in blog_posts %}
-        <div class="blog-item" data-aos="fade-up">
-          <h2 class="blog-title">
-            <a href="{% url 'portfolio_app:blog_detail' post.id %}">{{ post.title }}</a>
-          </h2>
-          <p class="blog-meta">{{ post.date }} | {{ post.category }}</p>
-          <img src="{{ post.image.url }}"
-               alt="{{ post.title }}"
-               class="blog-image"
-               width="600"
-               height="400">
-          <p class="blog-excerpt">{{ post.excerpt }}</p>
-          <a href="{% url 'portfolio_app:blog_detail' post.id %}"
-             class="read-more">Read More</a>
-        </div>
-      {% endfor %}
-    </div>
   </section>
   <section class="section" id="apps">
     <h1 class="section-headline">Apps</h1>

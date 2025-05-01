@@ -4,12 +4,14 @@ from django.db import models
 
 # Profileを管理するモデル
 class Profile(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=20)
     birth_date = models.DateField()
-    location = models.CharField(max_length=100)
-    education = models.CharField(max_length=200)
-    about_me = models.TextField()
+    location = models.CharField(max_length=50)
+    education = models.CharField(max_length=50)
     profile_image = models.ImageField(upload_to='images/')
+    blog = models.URLField(blank=True, verbose_name='Blog')
+    github = models.URLField(blank=True, verbose_name='GitHub')
+    # 必要に応じて他SNSも追加可
 
     def __str__(self):
         return self.name
@@ -33,31 +35,12 @@ class MyQualification(models.Model):
     class Meta:
       db_table = 'my_qualification'
 
-# Blog　を管理するモデル
-class BlogPost(models.Model):
-    CATEGORY_CHOICES = [
-        ('hobby', '趣味'),
-        ('dev', '開発備忘録'),
-        ('other', 'その他'),
-    ]
-
-    title = models.CharField(max_length=200)
-    date = models.DateField(auto_now_add=True)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
-    image = models.ImageField(upload_to='blog_images/')
-    content = models.TextField()
-    excerpt = models.TextField(max_length=300, blank=True)  # 記事の概要
-
-    def __str__(self):
-        return self.title
-    
 # Apps を管理するモデル
-from django.db import models
-
 class App(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     link = models.URLField()
+    image =models.ImageField(blank=True , upload_to='images/')
 
     def __str__(self):
         return self.title
